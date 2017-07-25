@@ -16,7 +16,7 @@ c. Build solution
 d. Sample tests are currently based on raw NUNIT: main project = actionsamples
 
 
-Sample page setup : 
+Sample XML based page setup : 
 
 //github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/pages/pages.xml)
 
