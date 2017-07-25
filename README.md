@@ -2,7 +2,7 @@ Description: 	Maxwell Project
 
 Author:		Des McCarter
 
-Selenium based page factory testOB framework.
+Selenium based page factory test framework.
 
 
 Set-up:
