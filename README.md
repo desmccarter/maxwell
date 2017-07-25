@@ -27,7 +27,7 @@ Sample pagei setup : (//github.com/desmccarter/maxwell/blob/master/all/actionsam
   
 </Pages>
 
-Sample code usage (of page):
+Sample code usage of page/XML: (https://github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/tests/TestExpediaFlights.cs)
 
 namespace actionsamples.expedia.flights.tests
 {
