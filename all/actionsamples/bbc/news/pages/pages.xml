@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages>
+  <Page Name="BbcNewsPage" Url="http://news.bbc.co.uk">
+    <Element Name="Sport" XPath="//*[@id='orb-nav-links']/ul/li[@class='orb-nav-sport']/a"/>
+  </Page>
+</Pages>
+  

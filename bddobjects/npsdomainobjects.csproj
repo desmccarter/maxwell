@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9BEB40EE-15F5-4812-A3D2-2B655009A0E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uk.org.hs2.npsdomainobjects</RootNamespace>
+    <AssemblyName>bddobjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\all\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IDomainObject.cs" />
+    <Compile Include="ITestObject.cs" />
+    <Compile Include="nps\gpn\Gpn.cs" />
+    <Compile Include="nps\gvd\Gvd.cs" />
+    <Compile Include="nps\laa\LaaStageLandAcquisitionSearchPageEnum.cs" />
+    <Compile Include="nps\laa\Laa.cs" />
+    <Compile Include="nps\laa\LaaTypeEnum.cs" />
+    <Compile Include="nps\laa\LaaWorkflowStageEnum.cs" />
+    <Compile Include="nps\notice\LaaNotice.cs" />
+    <Compile Include="nps\worklist\WorkListLaa.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="serialisation\GenericData.cs" />
+    <Compile Include="simplebddobjects\StringBddObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\genericutils\genericutils.csproj">
+      <Project>{0730306b-c145-48a4-886d-727e0b8bfd90}</Project>
+      <Name>genericutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\pageengine\pageengine.csproj">
+      <Project>{F7F281A1-116D-4FC3-A9F8-C2929A006C89}</Project>
+      <Name>pageengine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

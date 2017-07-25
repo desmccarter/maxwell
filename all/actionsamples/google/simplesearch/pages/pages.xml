@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pages>
+  <Page Name="GoogleSearchPage" Url="http://www.google.com">
+    <Element Name="SearchBox" XPath="//input[@name='q']"/>
+    <Element Name="SearchButton" XPath="//input[@name='btnK']"/>
+    <Element Name="BarackObamaWikiLink" XPath="//a[contains(text(),'Barack Obama - Wikipedia')]"/>
+    <Element Name="JamesClerkMaxwellWikiLink" XPath="//a[contains(text(),'James Clerk Maxwell - Wikipedia')]"/>
+  </Page>
+</Pages>
+  

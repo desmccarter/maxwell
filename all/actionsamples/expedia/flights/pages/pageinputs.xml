@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PageInputs>
+
+  <PageInput Name="ExpediaPageLhrToMelInput" Page="ExpediaPage">
+    <Element Name="FlightsLink" Input="London, England, UK (LHR-Heathrow)"/>
+    <Element Name="FlightsFromBox" Input="Melbourne, VIC, Australia(MEL - All Airports)"/>
+    <Element Name="FlightsToBox" Input="London, England, UK (LHR-Heathrow)"/>
+  </PageInput>
+  
+</PageInputs>
+  
