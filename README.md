@@ -4,7 +4,20 @@ Author:		Des McCarter
 Selenium based page factory testOB framework.
 
 
-Sample pagei setup : (//github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/pages/pages.xml)
+Set-up:
+
+a. GIT clone https://github.com/desmccarter/maxwell
+b. Open solution maxwell/all/all.sln
+c. Build solution
+d. Sample tests are currently based on raw NUNIT: main project = actionsamples
+
+
+Sample page setup : 
+
+//github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/pages/pages.xml)
+
+
+Snippet ...
 
 <?xml version="1.0" encoding="utf-8" ?>
 <Pages>
@@ -27,38 +40,6 @@ Sample pagei setup : (//github.com/desmccarter/maxwell/blob/master/all/actionsam
   
 </Pages>
 
-Sample code usage of page/XML: (https://github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/tests/TestExpediaFlights.cs)
+Sample code usage of (above) page/XML: 
 
-namespace actionsamples.expedia.flights.tests
-{
-	[TestFixture]
-	public class TestExpediaFlights : ITestObject
-	{
-		[Test]
-		public void TestExpediaFlightsLink()
-		{
-            using (Page page = GetOpenedPage("ExpediaPage"))
-            {
-                page.Click("FlightsLink");
-                page.SetText("FlightsFromBox", "London, England, UK (LHR-Heathrow)");
-                page.SetText("FlightsToBox", "Melbourne, VIC, Australia(MEL - All Airports)");
-                page.SetDropdown("AdultsDropdown", "3");
-                page.SetText("DepartingBox", "21/10/2017");
-                page.SetText("ReturningBox", "29/11/2017");
-                page.SetDropdown("ChildrenDropdown", "3");
-                page.SetDropdown("ChildAge1Dropdown", "10");
-                page.SetDropdown("ChildAge2Dropdown", "12");
-                page.SetDropdown("ChildAge3Dropdown", "14");
-
-
-                page.DoubleClick("SearchButton");
-                int x = 0;
-            }
-		}
-	}
-}
-
-
-
-
-
+https://github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/tests/TestExpediaFlights.cs)
