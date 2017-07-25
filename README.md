@@ -1,4 +1,4 @@
-Description: 	Maxwell Project
+Description: 	Maxwell Project (Named after James Clerk Maxwell - https://en.wikipedia.org/wiki/James_Clerk_Maxwell)
 
 Author:		Des McCarter
 
@@ -11,10 +11,11 @@ a. GIT clone https://github.com/desmccarter/maxwell
 
 b. Open solution maxwell/all/all.sln
 
-c. Build solution
+c. Build solution using Visual Studio 2015+ (MSBuild)
 
 d. Sample tests are currently based on raw NUNIT: main project = actionsamples
 
+Note: Tests will be listed as NUNIT based tests within Test Explorer
 
 Sample XML based page setup : 
 
