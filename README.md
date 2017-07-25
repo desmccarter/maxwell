@@ -22,7 +22,7 @@ Sample XML based page setup :
 //github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/pages/pages.xml)
 
 
-Snippet ...
+Sample usage of page (Expedia Flights) ...
 
 <?xml version="1.0" encoding="utf-8" ?>
 <Pages>
