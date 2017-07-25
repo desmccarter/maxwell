@@ -8,8 +8,11 @@ Selenium based page factory test framework.
 Set-up:
 
 a. GIT clone https://github.com/desmccarter/maxwell
+
 b. Open solution maxwell/all/all.sln
+
 c. Build solution
+
 d. Sample tests are currently based on raw NUNIT: main project = actionsamples
 
 
