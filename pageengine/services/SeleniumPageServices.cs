@@ -18,10 +18,11 @@ using uk.org.hs2.pageengine.browserdrivers.interfaces;
 using uk.org.hs2.pageengine.enums;
 using uk.org.hs2.pageengine.pageinterface;
 using uk.org.hs2.pageengine.xml;
+using uk.org.hs2.shareddomainobjects;
 
 namespace uk.org.hs2.pageengine.services
 {
-    public abstract class SeleniumPageServices : IPageServices, IDisposable
+    public abstract class SeleniumPageServices : IPageServices, IDomainObject, IDisposable
     {
         // *** ... always initially has to be 1
         protected static int windowCount = 0;
@@ -160,8 +161,6 @@ namespace uk.org.hs2.pageengine.services
 
             new Actions(DriverWrapper.WebDriver)
             	.MoveToElement(webElement).SendKeys(value).Build().Perform();
-
-            int x = 0;
         }
 
         protected void SetElementValueUsingJavaScript(string xpath, string value)

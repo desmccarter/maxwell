@@ -226,7 +226,13 @@ namespace actionengine.actions
 
         public static Action ExecuteActionUsingMatch(string match)
         {
-            return ExecuteActionUsingMatch(match, new Hashtable(),null);
+            string actionsLocation = new StackTrace().GetFrame(1).
+                GetMethod().DeclaringType.Namespace;
+
+            actionsLocation = Regex.Match(actionsLocation,
+                @"^([^\.]*\.[^\.]*).*$").Groups[1].Value + @".actions.actions.xml";
+
+            return ExecuteActionUsingMatch(match, new Hashtable(), actionsLocation);
         }
 
         /// <summary>
@@ -284,9 +290,7 @@ namespace actionengine.actions
             else
             {
                 Assembly fa = typeof(ActionFactory).Assembly;
-
-                string actionsFile = AppSettings.Get("action.factory");
-
+                
                 for (int i = 0; i < 10; i++)
                 {
                     StackFrame sf = new StackTrace().GetFrame(i);
@@ -311,9 +315,7 @@ namespace actionengine.actions
         /// <returns></returns>
         public static Action GetActionByMatch(string match, string actionsFile)
         {
-            using (Stream stream =
-                GetTestExecutionAssembly().GetManifestResourceStream(
-                    actionsFile))
+            using (Stream stream = GenericUtils.GetResourceStream(actionsFile))
             {
                 using (StreamReader r = new StreamReader(stream))
                 {
@@ -326,7 +328,12 @@ namespace actionengine.actions
                                     ).ToArray().Length > 0
                                 ).ToArray();
 
-                    return aarr.Length>0?aarr[0]:null;
+                    if(aarr.Length==0)
+                    {
+                        throw new Exception("[ERR] Action matching '" + match + "' not found in resource " + actionsFile);
+                    }
+
+                    return aarr[0];
                 }
             }
         }

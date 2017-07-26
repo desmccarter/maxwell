@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using bddobjects;
+using uk.org.hs2.shareddomainobjects;
 
 namespace actionengine.actions
 {
-    public class TestActionStep
+    public class TestActionStep : ITestObject
     {
         protected static Hashtable map = new Hashtable();
 
@@ -26,12 +26,12 @@ namespace actionengine.actions
         /// <summary>
         /// Returns true if BDD object exists on hashmap
         /// </summary>
-        /// <param name="bddParameter"></param>
+        /// <param name="objectName"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        protected static bool CacheContainsBddParameter(string bddParameter, int index)
+        protected static bool CacheContainsObject(string objectName, int index)
         {
-            string cacheKey = GetCacheKey(bddParameter, index);
+            string cacheKey = GetCacheKey(objectName, index);
 
             return map.ContainsKey(cacheKey);
         }
@@ -39,22 +39,22 @@ namespace actionengine.actions
         /// <summary>
         /// Get BDD object from hashmap 
         /// </summary>
-        /// <param name="bddParameter"></param>
+        /// <param name="objectName"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        protected static IDomainObject GetCachedBddObject(string bddParameter, int index)
+        protected static IDomainObject GetCachedObject(string objectName, int index)
         {
-            string cacheKey = GetCacheKey(bddParameter, index);
+            string cacheKey = GetCacheKey(objectName, index);
 
             IDomainObject bddObject = (IDomainObject)map[cacheKey];
 
             return bddObject;
         }
 
-        protected static void CacheBddObject(string bddParameter, int index,
+        protected static void CacheObject(string objectName, int index,
             IDomainObject bddObject)
         {
-            string cacheKey = GetCacheKey(bddParameter, index);
+            string cacheKey = GetCacheKey(objectName, index);
 
             if (map.ContainsKey(cacheKey))
             {
@@ -64,9 +64,9 @@ namespace actionengine.actions
             map.Add(cacheKey, bddObject);
         }
 
-        protected static void DeleteCachedBddObject(string bddParameter, int index)
+        protected static void DeleteCachedObject(string objectName, int index)
         {
-            string cacheKey = GetCacheKey(bddParameter, index);
+            string cacheKey = GetCacheKey(objectName, index);
 
             if (map.ContainsKey(cacheKey))
             {
@@ -78,39 +78,7 @@ namespace actionengine.actions
         {
             map.Clear();
         }
-
-        protected static IDomainObject TranslateBddParameterToBddObject(string bddParameter,
-            int index)
-        {
-            IDomainObject bddObject = null;
-
-            if (bddParameter == null)
-            {
-                return null;
-            }
-
-            // *** check to see whether the page exists
-            // *** already within our static map ...
-
-            if (CacheContainsBddParameter(bddParameter, index))
-            {
-                try
-                {
-                    // *** this object exists in the cache, so simply
-                    // *** retrieve it ...
-
-                    bddObject = GetCachedBddObject(bddParameter, index);
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Failed to get page object using sentence '" + bddParameter +
-                        "' from map: " + e.ToString());
-                }
-            }
-
-            return bddObject;
-        }
-
+        
         protected static void AssertIsTrue(bool istrue, string message)
         {
             try

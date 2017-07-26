@@ -73,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\bddobjects\shareddomainobjects.csproj">
+      <Project>{9BEB40EE-15F5-4812-A3D2-2B655009A0E2}</Project>
+      <Name>shareddomainobjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\genericutils\genericutils.csproj">
       <Project>{0730306b-c145-48a4-886d-727e0b8bfd90}</Project>
       <Name>genericutils</Name>

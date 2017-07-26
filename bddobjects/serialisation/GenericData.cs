@@ -1,5 +1,4 @@
-﻿using bddobjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace uk.org.hs2.npsdomainobjects.serialisation
+namespace uk.org.hs2.shareddomainobjects.serialisation
 {
     public class GenericData
     {

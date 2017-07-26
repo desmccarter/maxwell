@@ -1,11 +1,10 @@
-﻿using bddobjects;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using uk.org.hs2.npsdomainobjects;
+using uk.org.hs2.shareddomainobjects;
 using uk.org.hs2.pageengine.factories;
 using uk.org.hs2.pageengine.services;
 using uk.org.hs2.pageengine.xml;

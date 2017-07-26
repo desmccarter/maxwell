@@ -9,11 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logging", "..\logging\loggi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "genericutils", "..\genericutils\genericutils.csproj", "{0730306B-C145-48A4-886D-727E0B8BFD90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "npsdomainobjects", "..\bddobjects\npsdomainobjects.csproj", "{9BEB40EE-15F5-4812-A3D2-2B655009A0E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shareddomainobjects", "..\bddobjects\shareddomainobjects.csproj", "{9BEB40EE-15F5-4812-A3D2-2B655009A0E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "actionsamples", "actionsamples\actionsamples.csproj", "{548B4DA4-B11C-4291-9865-229117925DDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pageengine", "..\pageengine\pageengine.csproj", "{F7F281A1-116D-4FC3-A9F8-C2929A006C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testdomainobjects", "..\testdomainobjects\testdomainobjects.csproj", "{B0016E64-46E6-458A-B1CC-8D879DBAB68F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F7F281A1-116D-4FC3-A9F8-C2929A006C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7F281A1-116D-4FC3-A9F8-C2929A006C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7F281A1-116D-4FC3-A9F8-C2929A006C89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0016E64-46E6-458A-B1CC-8D879DBAB68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0016E64-46E6-458A-B1CC-8D879DBAB68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0016E64-46E6-458A-B1CC-8D879DBAB68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0016E64-46E6-458A-B1CC-8D879DBAB68F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

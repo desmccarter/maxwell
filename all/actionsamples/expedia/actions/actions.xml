@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="actions.xsl"?>
+<Actions>
+
+  <Project>Sample Expedia test actions</Project>
+
+  <Author>Des McCarter @ BJSS</Author>
+
+  <Description>
+    Actions for all interactions with Expedia website.
+  </Description>
+
+  <Action Name="SubmitCompleteFlightDetails" Method="RunTest">
+
+    <Description>Fill in flight details and submit them and submit departure details</Description>
+
+    <Match>Submit Flight Details</Match>
+
+    <Test Name="SubmitFlightDetails"/>
+    <Test Name="ExpediaDepartures"/>
+    
+  </Action>
+  
+</Actions>

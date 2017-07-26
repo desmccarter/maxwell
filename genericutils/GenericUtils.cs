@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,26 +13,6 @@ namespace uk.org.hs2.genericutils
     public class GenericUtils
     {
         private static Random random = new Random();
-
-        private static string tempFolder = AppSettings.Get("temp.folder");
-
-        public static string TempFolder
-        {
-            get
-            {
-                string unparsedTemp = tempFolder;
-
-                string temp = unparsedTemp;
-
-                // *** if this is an environment variable then get it ...
-                if (Regex.Match(unparsedTemp, @"^[ ]*\%").Success)
-                {
-                    temp = Environment.GetEnvironmentVariable(unparsedTemp);
-                }
-
-                return temp;
-            }
-        }
 
         public static string GetRandomString(int length)
         {
@@ -87,6 +68,23 @@ namespace uk.org.hs2.genericutils
             }
 
             methodInfo.Invoke(objectContainingMethod, parameters);
+        }
+
+        public static Stream GetResourceStream(string resourceFile)
+        {
+            Stream[] s =
+                new StackTrace().GetFrames().Where(
+                frame => frame.GetMethod().DeclaringType.Assembly.
+                GetManifestResourceStream(resourceFile) != null).
+                Select(fr => fr.GetMethod().DeclaringType.Assembly.
+                GetManifestResourceStream(resourceFile)).ToArray();
+
+            if( (s==null) || (s.Length==0) )
+            {
+                throw new Exception("[ERR] Resource not found! :" + resourceFile);
+            }
+
+            return s[0];
         }
     }
 }

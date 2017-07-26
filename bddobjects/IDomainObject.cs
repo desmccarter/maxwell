@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bddobjects
+namespace uk.org.hs2.shareddomainobjects
 {
-    public abstract class IDomainObject
+    public interface IDomainObject
     {
     }
 }
