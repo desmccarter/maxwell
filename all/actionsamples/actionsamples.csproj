@@ -68,10 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bbc\news\tests\TestBbcNews.cs" />
-    <Compile Include="betfair\login\tests\TestBetfairAllSports.cs" />
-    <Compile Include="betfair\login\tests\TestBetfairLogin.cs" />
     <Compile Include="expedia\actions\implementations\TestExpediaDepartures.cs" />
     <Compile Include="expedia\actions\implementations\TestSubmitExpediaFlights.cs" />
+    <Compile Include="expedia\bddfeatures\implementations\ExpediaFeatures.cs" />
+    <Compile Include="expedia\bddfeatures\testdepartures.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>testdepartures.feature</DependentUpon>
+    </Compile>
     <Compile Include="google\simplesearch\tests\TestGoogleSearch.cs" />
     <Compile Include="expedia\flights\tests\TestExpediaFlights.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +111,10 @@
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="expedia\bddfeatures\testdepartures.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>testdepartures.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
     <None Include="SpecRunTestProfile.xsd">
@@ -118,11 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="google\simplesearch\pages\pages.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="betfair\login\pages\pages.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -147,7 +150,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="expedia\flights\tests\specflow\" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.30\build\Selenium.Chrome.WebDriver.targets')" />

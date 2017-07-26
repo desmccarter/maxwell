@@ -15,10 +15,19 @@
     <Description>Fill in flight details and submit them and submit departure details</Description>
 
     <Match>Submit Flight Details</Match>
+    <Match>Submits Flight Details</Match>
 
     <Test Name="SubmitFlightDetails"/>
-    <Test Name="ExpediaDepartures"/>
-    
   </Action>
-  
+
+  <Action Name="TestDeparturesPageRendered" Method="RunTest">
+
+    <Description>Test that departures page is rendered.</Description>
+
+    <Match>The Departures Page is Shown</Match>
+
+    <Test Name="ExpediaDepartures"/>
+
+  </Action>
+
 </Actions>

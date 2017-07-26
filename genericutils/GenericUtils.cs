@@ -72,6 +72,9 @@ namespace uk.org.hs2.genericutils
 
         public static Stream GetResourceStream(string resourceFile)
         {
+            StackFrame[] s1 =
+                new StackTrace().GetFrames();
+
             Stream[] s =
                 new StackTrace().GetFrames().Where(
                 frame => frame.GetMethod().DeclaringType.Assembly.
