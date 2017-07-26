@@ -22,7 +22,7 @@ namespace actionsamples.betfair.login.tests
             // *** for James Clerk Maxwell then finally dbl click
             // *** his wiki link ...
 
-            using (Page page = GetOpenedPage("BetfairPage"))
+            using (Page page = OpenPage("BetfairPage"))
             {
                 page.DoubleClick("AllSportsLink");
 

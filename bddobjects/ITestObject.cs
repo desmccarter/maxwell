@@ -1,5 +1,6 @@
 ﻿using bddobjects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,8 +13,11 @@ using uk.org.hs2.pageengine.xml;
 
 namespace uk.org.hs2.npsdomainobjects
 {
-	public abstract class ITestObject : IDomainObject
+	public abstract class ITestObject : IDomainObject, IDisposable
 	{
+        protected static Hashtable pageTable = new Hashtable();
+        protected static int pageCount = 0;
+
         protected Page GetNewPopupPage(String pageName)
         {
             string pageLocation = new StackTrace().GetFrame(1).
@@ -25,7 +29,9 @@ namespace uk.org.hs2.npsdomainobjects
             Page page = PageFactory.GetPage(pageName, pageLocation) as Page;
 
             page.OpenAsPopup();
-            
+
+            pageTable.Add(pageCount++, page);
+
             return page;
         }
 
@@ -41,10 +47,12 @@ namespace uk.org.hs2.npsdomainobjects
 
             page.OpenAsPrimary();
 
+            pageTable.Add(pageCount++, page);
+
             return page;
         }
 
-        protected Page GetOpenedPage(String pageName)
+        protected Page OpenPage(String pageName)
         {
             string pageLocation = new StackTrace().GetFrame(1).
                 GetMethod().DeclaringType.Namespace;
@@ -58,9 +66,31 @@ namespace uk.org.hs2.npsdomainobjects
 		protected Page GetOpenedPage(string pageName,
 			string pageFactoryLocation)
 		{
-			return
+			Page p =
 				PageFactory.GetOpenedPage(pageName,
 					pageFactoryLocation);
+
+            pageTable.Add(pageCount++, p);
+
+            return p;
 		}
-	}
+
+        public void Dispose()
+        {
+            if ( pageTable.Count > 0)
+            {
+                for(int i=0; i<pageTable.Count; i++)
+                {
+                    Page p = pageTable[i] as Page;
+
+                    if(p==null)
+                    {
+                        throw new Exception("[ERR] Null page object found whist trying to dispose of page");
+                    }
+
+                    p.Dispose();
+                }
+            }
+        }
+    }
 }

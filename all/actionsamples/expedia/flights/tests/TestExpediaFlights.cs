@@ -18,8 +18,13 @@ namespace actionsamples.expedia.flights.tests
 		[Test]
 		public void TestExpediaFlightsLink()
 		{
-            using (Page page = GetOpenedPage("ExpediaPage"))
+            // *** the following 'using' clause is to call all
+            // *** disposables after test is complete ...
+
+            using (this)
             {
+                Page page = OpenPage("ExpediaPage");
+
                 // *** go to flights link ...
                 page.Click("FlightsLink");
 
@@ -41,10 +46,10 @@ namespace actionsamples.expedia.flights.tests
                 // *** assert that search comes up with page containing 
                 // *** correct heading ...
 
-                using (Page departurePage = GetPage("ExpediaDeparturePage"))
-                {
-                    departurePage.AssertElementAndTextAreEqual("PageTitle", "Select your departure to Melbourne");
-                }
+                Page departurePage = GetPage("ExpediaDeparturePage");
+
+                departurePage.AssertElementAndTextAreEqual("PageTitle", "Select your departure to Melbourne");
+
             }
 		}
 	}

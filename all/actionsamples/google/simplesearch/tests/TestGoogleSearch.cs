@@ -22,7 +22,7 @@ namespace actionsamples.google.simplesearch.tests
             // *** for James Clerk Maxwell then finally dbl click
             // *** his wiki link ...
 
-            using (Page page = GetOpenedPage("GoogleSearchPage"))
+            using (Page page = OpenPage("GoogleSearchPage"))
             {
                 page.SetText("SearchBox", "James Clerk Maxwell");
                 page.Click("SearchButton");
@@ -37,7 +37,7 @@ namespace actionsamples.google.simplesearch.tests
             // *** for Barack Obama then finally dbl click
             // *** his wiki link ...
 
-            using (Page page = GetOpenedPage("GoogleSearchPage"))
+            using (Page page = OpenPage("GoogleSearchPage"))
             {
                 page.SetText("SearchBox", "Barack Obama");
                 page.Click("SearchButton");
@@ -48,7 +48,7 @@ namespace actionsamples.google.simplesearch.tests
 			// *** for Barack Obama then finally dbl click
 			// *** his wiki link ...
 
-			using (Page page = GetOpenedPage("GoogleSearchPage") )
+			using (Page page = OpenPage("GoogleSearchPage") )
 			{
 				page.SetText("SearchBox", "James Clerk Maxwell");
 				page.Click("SearchButton");

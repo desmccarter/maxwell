@@ -20,7 +20,7 @@ namespace actionsamples.bbc.news.tests
 		{
             // *** get an instance of bbc news and navigate to sport ...
 
-            using (Page page = GetOpenedPage("BbcNewsPage"))
+            using (Page page = OpenPage("BbcNewsPage"))
             {
                 page.DoubleClick("Sport");
             }
