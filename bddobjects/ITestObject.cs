@@ -29,6 +29,21 @@ namespace uk.org.hs2.npsdomainobjects
             return page;
         }
 
+        protected Page GetPage(String pageName)
+        {
+            string pageLocation = new StackTrace().GetFrame(1).
+                GetMethod().DeclaringType.Namespace;
+
+            pageLocation = Regex.Match(pageLocation,
+                @"^(.*)\.[^\.]*$").Groups[1].Value + @".pages.pages.xml";
+
+            Page page = PageFactory.GetPage(pageName, pageLocation) as Page;
+
+            page.OpenAsPrimary();
+
+            return page;
+        }
+
         protected Page GetOpenedPage(String pageName)
         {
             string pageLocation = new StackTrace().GetFrame(1).

@@ -20,20 +20,31 @@ namespace actionsamples.expedia.flights.tests
 		{
             using (Page page = GetOpenedPage("ExpediaPage"))
             {
+                // *** go to flights link ...
                 page.Click("FlightsLink");
+
+                // *** fill in details ...
                 page.SetText("FlightsFromBox", "London, England, UK (LHR-Heathrow)");
                 page.SetText("FlightsToBox", "Melbourne, VIC, Australia(MEL - All Airports)");
-                page.SetDropdown("AdultsDropdown", "3");
+                page.SetDropdown("AdultsDropdown", "2");
                 page.SetText("DepartingBox", "21/10/2017");
                 page.SetText("ReturningBox", "29/11/2017");
-                page.SetDropdown("ChildrenDropdown", "3");
+                page.SetDropdown("ChildrenDropdown", "4");
                 page.SetDropdown("ChildAge1Dropdown", "10");
                 page.SetDropdown("ChildAge2Dropdown", "12");
                 page.SetDropdown("ChildAge3Dropdown", "14");
+                page.SetDropdown("ChildAge4Dropdown", "17");
 
-
+                // *** do a search ...
                 page.DoubleClick("SearchButton");
-                int x = 0;
+
+                // *** assert that search comes up with page containing 
+                // *** correct heading ...
+
+                using (Page departurePage = GetPage("ExpediaDeparturePage"))
+                {
+                    departurePage.AssertElementAndTextAreEqual("PageTitle", "Select your departure to Melbourne");
+                }
             }
 		}
 	}

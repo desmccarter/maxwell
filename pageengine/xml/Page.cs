@@ -1,4 +1,5 @@
 ﻿using logging;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,40 @@ namespace uk.org.hs2.pageengine.xml
             return value;
         }
 
+        public void AssertElementAndTextAreEqual(string elementName, string expectedValue)
+        {
+            string actualValue = GetText(elementName);
+
+            AssertAreEqual(expectedValue, actualValue, null);
+        }
+
+        public void AssertAreEqual(string expectedValue, string actualValue, string errorMessage)
+        {
+
+            //Assert.AreEqual(expectedValue, actualValue, "[ERR] Element text does not match expected value");
+
+            // *** assert above throws an exception for no reason what so ever (it seems) so
+            // *** doing a manual IF ...
+
+            if ( expectedValue == null )
+            {
+                if( actualValue != null )
+                {
+                    throw new Exception("[ASSERT-ERR] Expected null actual value - " + errorMessage);
+                }
+            }
+            else
+            if( actualValue == null )
+            {
+                throw new Exception("[ASSERT-ERR] Actual value is null - " + errorMessage);
+            }
+            else
+            if( !expectedValue.Equals(actualValue) )
+            {
+                throw new Exception("[ASSERT-ERR] Expected value '" + expectedValue+"' does not match actual value '"+actualValue+"' " + errorMessage);
+            }
+        }
+
         public void SetText(string elementName, string text)
         {
             Element e = GetElementByName(elementName);
@@ -128,7 +163,7 @@ namespace uk.org.hs2.pageengine.xml
 
             try
             {
-                DoubleClickElementUsingXPath(e.XPath);
+                ClickElementUsingJavaScript(e.XPath);
 
                 Log.Debug("[INFO] Double click element " + e.Name + " successful.");
             }

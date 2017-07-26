@@ -16,6 +16,10 @@
     <Element Name="ReturningBox" XPath="//input[@id='flight-returning-hp-flight']"/>
     <Element Name="DepartingBox" XPath="//input[@id='flight-departing-hp-flight']"/>
   </Page>
-  
+
+  <Page Name="ExpediaDeparturePage" Url="http://www.expedia.co.uk">
+    <Element Name="PageTitle" XPath="//div[@class='title-departure']/span[@class='title-city-text']"/>
+  </Page>
+
 </Pages>
   

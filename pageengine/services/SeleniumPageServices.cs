@@ -85,6 +85,17 @@ namespace uk.org.hs2.pageengine.services
             }
         }
 
+        protected void SetWindowsHandleAsPrimary()
+        {
+            windowsHandle =
+                driverInfo.driverWrapper.WebDriver.WindowHandles[0];
+
+            if (currentWindowsHandle == null)
+            {
+                currentWindowsHandle = windowsHandle;
+            }
+        }
+
         public void SwitchToThisWindow()
         {
             if ( (currentWindowsHandle == null) || (currentWindowsHandle!=windowsHandle) )
@@ -107,6 +118,15 @@ namespace uk.org.hs2.pageengine.services
             pageType = PageTypeEnum.POPUP;
         }
 
+        public void OpenAsPrimary()
+        {
+            SetWindowsHandleAsPrimary();
+
+            openedPage = true;
+
+            SwitchToThisWindow();
+        }
+
         public void Open(string url)
 		{
             this.url = url;
@@ -122,15 +142,64 @@ namespace uk.org.hs2.pageengine.services
             SwitchToThisWindow();
 		}
 
-		public void SetElementTextUsingWebElement(IWebElement webElement, string value)
+        protected void ClearElementText(IWebElement webElement)
+        {
+            SwitchToThisWindow();
+
+            new Actions(DriverWrapper.WebDriver)
+                .MoveToElement(webElement).Click();
+
+            webElement.Clear();
+        }
+
+        public void SetElementTextUsingWebElement(IWebElement webElement, string value)
 		{
             SwitchToThisWindow();
 
-			new Actions(DriverWrapper.WebDriver)
-				.MoveToElement(webElement).Click().SendKeys(value).Build().Perform();
-		}
+            ClearElementText(webElement);
 
-		protected IWebElement FindElement(string xpath)
+            new Actions(DriverWrapper.WebDriver)
+            	.MoveToElement(webElement).SendKeys(value).Build().Perform();
+
+            int x = 0;
+        }
+
+        protected void SetElementValueUsingJavaScript(string xpath, string value)
+        {
+            ((IJavaScriptExecutor)DriverWrapper.WebDriver).
+                ExecuteScript(
+                "var element = document.evaluate(\"" + xpath + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; element.setAttribute(\"value\",\"" + value + "\");");
+        }
+
+        protected void ClickElementUsingJavaScript(string xpath)
+        {
+            ((IJavaScriptExecutor)DriverWrapper.WebDriver).
+                ExecuteScript(
+                "var element = document.evaluate(\"" + xpath + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; element.click();");
+        }
+
+        protected void DoubleClickElementUsingJavaScript(string xpath)
+        {
+            string javascript =
+                "var element = document.evaluate(\"" + xpath + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;" +
+                "var clickEvent = document.createEvent(\"MouseEvents\");" +
+                "clickEvent.initEvent(\"dblclick\", true, true);" +
+                "element.dispatchEvent(clickEvent);";
+
+            ((IJavaScriptExecutor)DriverWrapper.WebDriver).
+                ExecuteScript(javascript);
+        }
+
+        public void SetElementTextUsingXPath(string xpath, string value)
+        {
+            SwitchToThisWindow();
+
+            WaitForElement(xpath);
+
+            SetElementValueUsingJavaScript(xpath, value);
+        }
+
+        protected IWebElement FindElement(string xpath)
 		{
             SwitchToThisWindow();
 
@@ -239,51 +308,14 @@ namespace uk.org.hs2.pageengine.services
 
             WaitForElement(xpath);
 
-            new Actions(DriverWrapper.WebDriver)
-				.MoveToElement(FindElement(xpath)).DoubleClick().Build().Perform();
-		}
+            // new Actions(DriverWrapper.WebDriver)
+            //	.MoveToElement(FindElement(xpath)).DoubleClick().Build().Perform();
+            //new Actions(DriverWrapper.WebDriver)
+            //   .MoveToElement(FindElement(xpath)).DoubleClick().Build().Perform();
 
-		public void SetElementTextUsingXPath(string xpath, string value)
-		{
-            SwitchToThisWindow();
+            DoubleClickElementUsingJavaScript(xpath);
+        }
 
-            // *** we need to check if we're getting an attribute.
-            // *** if so then we want to call the getelementattribute
-            // *** method, else getelementtext ...
-
-            // *** if we are setting an attribute ...
-
-            Match m = null;
-
-			if ((m = new Regex("^(.*)/@([a-z|A-Z| ]+)$",
-				RegexOptions.RightToLeft).Match(xpath)).Success)
-			{
-				// *** extract thew new XPath ...
-				string newxpath = m.Groups[1].Value;
-
-				// *** extract the name of the attribute we need
-				// *** to get data from ...
-
-				string attributeName = m.Groups[2].Value;
-
-                WaitForElement(newxpath);
-
-				IWebElement webElement = FindElement(newxpath);
-
-				SetElementTextUsingWebElement(webElement, value);
-			}
-			else
-			{
-				// *** just set the text
-				// *** to the element ...
-
-				WaitForElement(xpath);
-
-				IWebElement webElement = FindElement(xpath);
-
-				SetElementTextUsingWebElement(webElement, value);
-			}
-		}
 
         public void SetDropdownUsingXPath(string xpath, string value)
         {
