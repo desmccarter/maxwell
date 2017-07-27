@@ -70,7 +70,7 @@ namespace actionsamples.Expedia.Bddfeatures
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given("an Expedia customer Submits Filght Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("an Expedia customer Submits Flight Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
  testRunner.Then("the customer should successfuly verify that The Departures Page is Shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

@@ -21,35 +21,43 @@ namespace uk.org.hs2.pageengine.browserdrivers
 
             string driverWrapperType = AppSettings.Get("driver.wrapper.class");
 
-            Type classType = null;
-
-            foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (Assembly a in GenericUtils.GetAllAssemblies())
             {
-                foreach (Type assType in a.GetTypes())
+                try
                 {
-                    string assTypeStr = assType.ToString();
+                    Type[] aType =
+                        a.GetTypes() == null ? null :
+                        a.GetTypes()
+                        .Where(type => (type != null) && type.ToString().EndsWith(driverWrapperType))
+                        .ToArray();
 
-                    if( assTypeStr.EndsWith(driverWrapperType) )
+                    if ((aType != null) && (aType.Length > 0))
                     {
-                        classType = assType; break;
+                        // *** found driver, so create new instance of it
+                        // *** (i.e. start selenium) ...
+
+                        driverWrapper = Activator.CreateInstance(
+                                aType[0],
+                                new object[] { location }) as IDriverHandler;
+                        break;
                     }
+                }
+                catch (ReflectionTypeLoadException e)
+                {
+                    // *** ignore this error but log it ...
+                    Log.Warn("[WARN] Unable to load types: " + e);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrAndFail("[ERR] Failed to create instance of driver handler " + driverWrapperType + 
+                        ". Looks like there was an issue starting selenium. Exception was '" + e.Message + "'");
                 }
             }
 
-            if(classType==null)
+            if(driverWrapper==null)
             {
-                Log.ErrAndFail("[ERR] Cannot find class " + driverWrapperType + " anywhere within app domain");
-            }
-
-            try
-            {
-                driverWrapper = Activator.CreateInstance(
-                        classType,
-                        new object[] { location }) as IDriverHandler;
-            }
-            catch(Exception e)
-            {
-                Log.ErrAndFail("[ERR] Failed to create instance of driver handler " + driverWrapperType + ". It either does not implement IDriverWrapper or the driver location does not exist. Exception was '"+e.Message+"'");
+                Log.ErrAndFail("[ERR] Failed to create instance of driver handler " + driverWrapperType +
+                    ". It either does not implement IDriverWrapper or the driver location does not exist. Exception was '");
             }
         }
     }

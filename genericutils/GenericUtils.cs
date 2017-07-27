@@ -72,22 +72,36 @@ namespace uk.org.hs2.genericutils
 
         public static Stream GetResourceStream(string resourceFile)
         {
-            StackFrame[] s1 =
-                new StackTrace().GetFrames();
+            Assembly[] a =
+                new StackTrace().GetFrames()
+                .Select(frame => frame.GetMethod().DeclaringType)
+                .Where(type => (type!=null))
+                .Select(type=>type.Assembly)
+                .Where(assembly=>assembly.GetManifestResourceStream(resourceFile)!=null).ToArray();
 
-            Stream[] s =
-                new StackTrace().GetFrames().Where(
-                frame => frame.GetMethod().DeclaringType.Assembly.
-                GetManifestResourceStream(resourceFile) != null).
-                Select(fr => fr.GetMethod().DeclaringType.Assembly.
-                GetManifestResourceStream(resourceFile)).ToArray();
-
-            if( (s==null) || (s.Length==0) )
+            if( (a==null) || (a.Length==0) )
             {
                 throw new Exception("[ERR] Resource not found! :" + resourceFile);
             }
 
-            return s[0];
+            return a[0].GetManifestResourceStream(resourceFile);
+        }
+
+        public static Assembly[] GetAllAssemblies()
+        {
+            return
+                new StackTrace().GetFrames().Where(frame=>frame.GetMethod().DeclaringType!=null)
+                .Select(frame => frame.GetMethod().DeclaringType.Assembly).ToArray();
+        }
+
+        public static Type[][] GetAllTypes()
+        {
+            return
+                new StackTrace().GetFrames().Where(frame => frame.GetMethod().DeclaringType != null)
+                .Select(frame => frame.GetMethod().DeclaringType.Assembly)
+                .Where(assembly=>assembly.GetTypes()!=null)
+                .Select(assembly=>assembly.GetTypes())
+                .ToArray();
         }
     }
 }

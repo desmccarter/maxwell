@@ -33,37 +33,22 @@ namespace uk.org.hs2.pageengine.factories
 			}
 
 			Page page = null;
-
-			// *** go through all the methods that have called this method
-			// *** and get the resource (using the methods assembly) location ...
-
-			Stream[] s =
-				new StackTrace().GetFrames().Where(
-					frame => frame.GetMethod().DeclaringType.Assembly.
-					GetManifestResourceStream(pageFactoryLocation) != null).
-					Select(fr => fr.GetMethod().DeclaringType.Assembly.
-					GetManifestResourceStream(pageFactoryLocation)).ToArray();
-
-			if (s.Length == 0)
+            
+			using (Stream s = GenericUtils.GetResourceStream(pageFactoryLocation))
 			{
-				Log.ErrAndFail("[ERR] Cannot find page factory resource " + pageFactoryLocation);
-			}
+                using (StreamReader r = new StreamReader(s))
+                {
+                    Pages pages = new XmlSerializer(typeof(Pages)).Deserialize(r) as Pages;
 
-			using (s[0])
-			{
-				using (StreamReader r = new StreamReader(s[0]))
-				{
-					Pages pages = new XmlSerializer(typeof(Pages)).Deserialize(r) as Pages;
+                    Page[] parr =
+                        (pages as Pages)
+                        .Page.Where(
+                            item =>
+                                item.Name.Equals(name)
+                                    ).ToArray() as Page[];
 
-					Page[] parr =
-						(pages as Pages)
-						.Page.Where(
-							item =>
-								item.Name.Equals(name)
-									).ToArray() as Page[];
-
-					page = parr.Length > 0 ? parr[0] : null;
-				}
+                    page = parr.Length > 0 ? parr[0] : null;
+                }
 			}
 
             if (page == null)
@@ -79,7 +64,7 @@ namespace uk.org.hs2.pageengine.factories
 				foreach (string parentPageName in
 					page.InheritsPages.Page.Select(item => item.Name))
 				{
-					Page parentPage = GetOpenedPage(parentPageName, pageFactoryLocation);
+					Page parentPage = GetPage(parentPageName, pageFactoryLocation);
 
 					if (parentPage == null)
 					{
