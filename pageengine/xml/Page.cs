@@ -163,7 +163,7 @@ namespace uk.org.hs2.pageengine.xml
 
             try
             {
-                ClickElementUsingJavaScript(e.XPath);
+                ClickElementUsingXPath(e.XPath);
 
                 Log.Debug("[INFO] Double click element " + e.Name + " successful.");
             }

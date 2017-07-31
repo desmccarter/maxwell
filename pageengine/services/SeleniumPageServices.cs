@@ -99,10 +99,24 @@ namespace uk.org.hs2.pageengine.services
 
         public void SwitchToThisWindow()
         {
-            if ( (currentWindowsHandle == null) || (currentWindowsHandle!=windowsHandle) )
+            if(currentWindowsHandle==null)
             {
-                currentWindowsHandle = windowsHandle;
-                driverInfo.driverWrapper.WebDriver.SwitchTo().Window(windowsHandle);
+                currentWindowsHandle=
+                    driverInfo.driverWrapper.WebDriver.WindowHandles[0];
+            }
+
+            if ( windowsHandle != null )
+            {
+                if (currentWindowsHandle != windowsHandle)
+                {
+                    currentWindowsHandle = windowsHandle;
+
+                    driverInfo.driverWrapper.WebDriver.SwitchTo().Window(windowsHandle);
+                }
+            }
+            else
+            {
+                throw new Exception("[ERR] windowsHandle cannot be null");
             }
         }
 
@@ -172,9 +186,21 @@ namespace uk.org.hs2.pageengine.services
 
         protected void ClickElementUsingJavaScript(string xpath)
         {
+            SwitchToThisWindow();
+
+            // string script=
+            //     "var element = document.evaluate(\"" + xpath + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; element.click();";
+
+            string script =
+                "document.evaluate( '//body', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null );";
+
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)DriverWrapper.WebDriver;
+
+            jse.ExecuteScript(script);
+
             ((IJavaScriptExecutor)DriverWrapper.WebDriver).
                 ExecuteScript(
-                "var element = document.evaluate(\"" + xpath + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; element.click();");
+                script);
         }
 
         protected void DoubleClickElementUsingJavaScript(string xpath)

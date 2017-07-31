@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="bbc\news\tests\TestBbcNews.cs" />
     <Compile Include="expedia\actions\implementations\TestExpediaDepartures.cs" />
-    <Compile Include="expedia\actions\implementations\TestSubmitExpediaFlights.cs" />
+    <Compile Include="expedia\actions\implementations\TestSubmitFlightDetails.cs" />
     <Compile Include="expedia\bddfeatures\implementations\ExpediaFeatures.cs" />
     <Compile Include="expedia\bddfeatures\testdepartures.feature.cs">
       <AutoGen>True</AutoGen>
