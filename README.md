@@ -2,10 +2,12 @@ Description: 	Maxwell Project (Named after James Clerk Maxwell - https://en.wiki
 
 Author:		Des McCarter
 
-Selenium based page factory test framework.
+XML based Selenium page factory and test flow automation framework.
+
+Full documentation can be found in this repository at https://github.com/desmccarter/maxwell/blob/master/README.docx.
 
 
-Set-up:
+Framework download and set-up:
 
 a. GIT clone https://github.com/desmccarter/maxwell
 
@@ -15,7 +17,21 @@ c. Build solution using Visual Studio 2015+ (MSBuild)
 
 d. Sample tests are currently based on raw NUNIT: main project = actionsamples
 
-Note: Tests will be listed as NUNIT based tests within Test Explorer
+
+Note: Sample tests will be listed as either NUNIT or Specflow based within Test Explorer in Visual Studio
+
+Dependencies (automatically resolved on installation):
+
+Software				Version			Installation/location
+Visual Studio 2015 Community Edition	14.0.25431.01 Update 3	https://www.visualstudio.com/downloads/
+Specflow				2.2.0			NUGET
+Specflow.Runner				1.6.0			NUGET
+SpecRun.Specflow			1.6.0			NUGET
+Selenium.WebDriver			3.4.0			NUGET
+WebDriver.ChromeDriver.win32		2.30.0			NUGET
+Selenium.Support			3.4.0			NUGET
+NUNIT					3.7.1			NUGET
+
 
 Sample XML based page setup : 
 
