@@ -22,9 +22,9 @@ Note: Sample tests will be listed as either NUNIT or Specflow based within Test 
 
 Dependencies (automatically resolved on installation):
 
-Software				Version			Installation/location
+Software                                Version Installation/location
 Visual Studio 2015 Community Edition	14.0.25431.01 Update 3	https://www.visualstudio.com/downloads/
-Specflow				2.2.0			NUGET
+Specflow				2.2.0			NUGE
 Specflow.Runner				1.6.0			NUGET
 SpecRun.Specflow			1.6.0			NUGET
 Selenium.WebDriver			3.4.0			NUGET
