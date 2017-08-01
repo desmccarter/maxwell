@@ -2,7 +2,7 @@ Description: 	Maxwell Project (Named after James Clerk Maxwell - https://en.wiki
 
 Author:		Des McCarter
 
-XML based test flow automation abd Selenium page factory framework.
+XML based test flow automation and Selenium page factory framework.
 
 (Think of this framework married with Selenium as Angular JS is married to Javascript/JQuery)
 
