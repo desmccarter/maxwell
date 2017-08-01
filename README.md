@@ -2,10 +2,12 @@ Description: 	Maxwell Project (Named after James Clerk Maxwell - https://en.wiki
 
 Author:		Des McCarter
 
-XML based Selenium page factory and test flow automation framework.
+XML based test flow automation abd Selenium page factory framework.
+
+(Think of this framework married with Selenium as Angular JS is married to Javascript/JQuery)
+
 
 Full documentation can be found in this repository at https://github.com/desmccarter/maxwell/blob/master/README.docx.
-
 
 Framework download and set-up:
 
@@ -20,25 +22,13 @@ d. Sample tests are currently based on raw NUNIT: main project = actionsamples
 
 Note: Sample tests will be listed as either NUNIT or Specflow based within Test Explorer in Visual Studio
 
-Dependencies (automatically resolved on installation):
+Dependencies are listed in the comprehensive README doc (.docx)
 
-Software                                Version Installation/location
-Visual Studio 2015 Community Edition	14.0.25431.01 Update 3	https://www.visualstudio.com/downloads/
-Specflow				2.2.0			NUGE
-Specflow.Runner				1.6.0			NUGET
-SpecRun.Specflow			1.6.0			NUGET
-Selenium.WebDriver			3.4.0			NUGET
-WebDriver.ChromeDriver.win32		2.30.0			NUGET
-Selenium.Support			3.4.0			NUGET
-NUNIT					3.7.1			NUGET
-
-
-Sample XML based page setup : 
+Sample XML based page definitions retrived from PageFactory.GetPage(): 
 
 //github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/pages/pages.xml)
 
-
-Sample usage of page (Expedia Flights) ...
+Page definiteion snapshot (Expedia Flights) ...
 
 <?xml version="1.0" encoding="utf-8" ?>
 <Pages>
@@ -61,6 +51,6 @@ Sample usage of page (Expedia Flights) ...
   
 </Pages>
 
-Sample code usage of (above) page/XML: 
+Sample code usage of (above) page page instance (retrived by calling PageFactory.GetPage("ExpediaPage") behind the sceens: 
 
 https://github.com/desmccarter/maxwell/blob/master/all/actionsamples/expedia/flights/tests/TestExpediaFlights.cs)
