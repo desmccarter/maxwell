@@ -18,7 +18,7 @@ b. Open solution maxwell/all/all.sln
 
 c. Build solution using Visual Studio 2015+ (MSBuild)
 
-d. Sample tests are currently based on raw NUNIT: main project = actionsamples
+d. Sample tests are currently based on raw NUNIT and Specflow exclusively: main project = actionsamples
 
 
 Note: Sample tests will be listed as either NUNIT or Specflow based within Test Explorer in Visual Studio
