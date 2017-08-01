@@ -4,7 +4,8 @@ Author:		Des McCarter
 
 XML based test flow automation and Selenium page factory framework.
 
-(Think of this framework as "married" with Selenium, as Angular JS is married to Javascript/JQuery)
+Think of this framework as "married" with Selenium, as Angular JS is married to Javascript/JQuery, i.e.
+simply attempts to add efficiency and structure to automated tests.
 
 
 Full documentation can be found in this repository at https://github.com/desmccarter/maxwell/blob/master/README.docx.
