@@ -8,11 +8,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using uk.org.hs2.genericutils;
-using uk.org.hs2.pageengine.services;
-using uk.org.hs2.pageengine.xml;
+using uk.org.maxwell.genericutils;
+using uk.org.maxwell.pageengine.services;
+using uk.org.maxwell.pageengine.xml;
 
-namespace uk.org.hs2.pageengine.factories
+namespace uk.org.maxwell.pageengine.factories
 {
     public class PageFactory
     {

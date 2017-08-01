@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using uk.org.hs2.genericutils;
+using uk.org.maxwell.genericutils;
 
 namespace logging
 {

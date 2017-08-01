@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.shareddomainobjects.simplebddobjects
+namespace uk.org.maxwell.shareddomainobjects.simplebddobjects
 {
     public class StringDomainObject : IDomainObject
     {

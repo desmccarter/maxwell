@@ -1,4 +1,4 @@
-﻿using uk.org.hs2.genericutils;
+﻿using uk.org.maxwell.genericutils;
 using logging;
 using System;
 using System.Collections.Generic;

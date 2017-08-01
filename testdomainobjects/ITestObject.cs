@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using uk.org.hs2.pageengine.factories;
-using uk.org.hs2.pageengine.services;
-using uk.org.hs2.pageengine.xml;
+using uk.org.maxwell.pageengine.factories;
+using uk.org.maxwell.pageengine.services;
+using uk.org.maxwell.pageengine.xml;
 
-namespace uk.org.hs2.shareddomainobjects
+namespace uk.org.maxwell.shareddomainobjects
 {
 	public abstract class ITestObject : IDomainObject, IDisposable
 	{

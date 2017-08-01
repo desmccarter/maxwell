@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.shareddomainobjects
+namespace uk.org.maxwell.shareddomainobjects
 {
     public interface IDomainObject
     {

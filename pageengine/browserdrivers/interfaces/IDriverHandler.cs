@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.pageengine.browserdrivers.interfaces
+namespace uk.org.maxwell.pageengine.browserdrivers.interfaces
 {
 	public abstract class IDriverHandler
 	{

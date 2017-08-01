@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.genericutils
+namespace uk.org.maxwell.genericutils
 {
     public class AppSettings
     {

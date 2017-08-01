@@ -12,15 +12,15 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using uk.org.hs2.pageengine.browserdrivers;
-using uk.org.hs2.pageengine.browserdrivers.handlers;
-using uk.org.hs2.pageengine.browserdrivers.interfaces;
-using uk.org.hs2.pageengine.enums;
-using uk.org.hs2.pageengine.pageinterface;
-using uk.org.hs2.pageengine.xml;
-using uk.org.hs2.shareddomainobjects;
+using uk.org.maxwell.pageengine.browserdrivers;
+using uk.org.maxwell.pageengine.browserdrivers.handlers;
+using uk.org.maxwell.pageengine.browserdrivers.interfaces;
+using uk.org.maxwell.pageengine.enums;
+using uk.org.maxwell.pageengine.pageinterface;
+using uk.org.maxwell.pageengine.xml;
+using uk.org.maxwell.shareddomainobjects;
 
-namespace uk.org.hs2.pageengine.services
+namespace uk.org.maxwell.pageengine.services
 {
     public abstract class SeleniumPageServices : IPageServices, IDomainObject, IDisposable
     {

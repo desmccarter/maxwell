@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace uk.org.hs2.pageengine.xml
+namespace uk.org.maxwell.pageengine.xml
 {
     [XmlRoot("Element")]
     public class Element

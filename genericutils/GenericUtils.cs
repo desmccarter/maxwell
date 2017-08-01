@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.genericutils
+namespace uk.org.maxwell.genericutils
 {
     public class GenericUtils
     {

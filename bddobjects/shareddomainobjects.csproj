@@ -7,7 +7,7 @@
     <ProjectGuid>{9BEB40EE-15F5-4812-A3D2-2B655009A0E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>uk.org.hs2.shareddomainobjects</RootNamespace>
+    <RootNamespace>uk.org.maxwell.shareddomainobjects</RootNamespace>
     <AssemblyName>bddobjects</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

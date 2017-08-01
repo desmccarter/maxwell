@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using uk.org.hs2.pageengine.services;
+using uk.org.maxwell.pageengine.services;
 
-namespace uk.org.hs2.pageengine.xml
+namespace uk.org.maxwell.pageengine.xml
 {
     [XmlRoot("Pages")]
     public class Pages

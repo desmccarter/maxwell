@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace uk.org.hs2.pageengine.enums
+namespace uk.org.maxwell.pageengine.enums
 {
     public enum PageTypeEnum
     {

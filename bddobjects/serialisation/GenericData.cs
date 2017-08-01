@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace uk.org.hs2.shareddomainobjects.serialisation
+namespace uk.org.maxwell.shareddomainobjects.serialisation
 {
     public class GenericData
     {

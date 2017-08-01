@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using uk.org.hs2.pageengine.browserdrivers.interfaces;
+using uk.org.maxwell.pageengine.browserdrivers.interfaces;
 
-namespace uk.org.hs2.pageengine.browserdrivers.handlers
+namespace uk.org.maxwell.pageengine.browserdrivers.handlers
 {
 	public class IEDriverHandler : IDriverHandler
 	{

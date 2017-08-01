@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using uk.org.hs2.genericutils;
-using uk.org.hs2.pageengine.browserdrivers.interfaces;
+using uk.org.maxwell.genericutils;
+using uk.org.maxwell.pageengine.browserdrivers.interfaces;
 
-namespace uk.org.hs2.pageengine.browserdrivers
+namespace uk.org.maxwell.pageengine.browserdrivers
 {
     public class DriverInfo
     {

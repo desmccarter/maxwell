@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using uk.org.hs2.shareddomainobjects;
-using uk.org.hs2.pageengine.factories;
-using uk.org.hs2.pageengine.services;
-using uk.org.hs2.pageengine.xml;
+using uk.org.maxwell.shareddomainobjects;
+using uk.org.maxwell.pageengine.factories;
+using uk.org.maxwell.pageengine.services;
+using uk.org.maxwell.pageengine.xml;
 
 namespace actionsamples.expedia.flights.tests
 {
